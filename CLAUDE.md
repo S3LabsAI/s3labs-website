@@ -18,14 +18,14 @@ python3 -m http.server 8000   # then open http://localhost:8000/
 
 Three pages at the repo root, implemented from a Claude Design handoff:
 
-- **`index.html`** — home: hero, stats band, featured DropDoc card with dropzone mock, "The Lab" product grid, contact CTA, footer.
+- **`index.html`** — home: hero, stats band, featured State Reports card with ZIP-tier map mock, "The Lab" product grid, contact CTA, footer.
 - **`projects.html`** — project grid with Live / In progress filter buttons.
 - **`library.html`** — curated software library: ~130 tool cards with category filters and live search. Card logos live in `assets/img/lib/`.
 
 Shared foundation:
 
 - **`assets/css/styles.css`** — the only stylesheet: `@font-face` for Lato (from `fonts/*.ttf`), keyframes, `.hv*` numbered hover classes, and attribute-selector media queries that override inline `grid-template-columns` for responsiveness. Page/layout styles are **inline `style` attributes in the HTML** (design-tool export idiom) — keep that pattern when editing.
-- **`assets/js/main.js`** — one IIFE shared by all pages: `[data-reveal]` scroll reveals (IntersectionObserver + no-JS/fallback paths), `[data-count]` animated counters, `[data-filterbar]`/`[data-card]` category filters with optional `[data-search]` live search, and the home-page DropDoc dropzone mock (`#mockDrop`).
+- **`assets/js/main.js`** — one IIFE shared by all pages: `[data-reveal]` scroll reveals (IntersectionObserver + no-JS/fallback paths), `[data-count]` animated counters, `[data-filterbar]`/`[data-card]` category filters with optional `[data-search]` live search.
 
 ## Conventions & gotchas
 
@@ -34,4 +34,4 @@ Shared foundation:
 - **Favicon is cache-busted** with `?v=N` on the `<link rel="icon">` href (`assets/img/favicon.png`) — bump `N` when replacing the file.
 - **Internal links use `*.html` hrefs** so the site works under `python3 -m http.server`; in production Vercel's `cleanUrls` redirects `/projects.html` → `/projects`.
 - The contact CTA is a `mailto:` link; there is no form and no backend anywhere on the site.
-- Product links: DropDoc → `https://dropdoc.sh`, StyleSnap → `https://stylesnap.design`, Persona → `https://personalab.im`.
+- Product links: State Reports → `https://state-reporting-site.vercel.app/`, StyleSnap → `https://stylesnap.design`, Persona → `https://personalab.im`.
