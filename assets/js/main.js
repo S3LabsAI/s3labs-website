@@ -1,4 +1,4 @@
-/* s3labs.tech — interactivity (reveal, counters, filters, search, DropDoc mock) */
+/* s3labs.tech — interactivity (reveal, counters, filters, search) */
 (function () {
   function ready(fn){ document.readyState!=='loading' ? fn() : document.addEventListener('DOMContentLoaded', fn); }
   ready(function () {
@@ -73,25 +73,5 @@
       });
       if (search) search.addEventListener('input', function (ev) { q = ev.target.value.trim().toLowerCase(); apply(); });
     });
-
-    // DropDoc mock (home): hover the dropzone, watch the copied state
-    var mockDrop = document.getElementById('mockDrop'), mockCopied = document.getElementById('mockCopied');
-    if (mockDrop && mockCopied) {
-      var mt1, mt2;
-      mockDrop.addEventListener('mouseenter', function () {
-        mockDrop.style.borderColor = '#5C9BE8';
-        mockDrop.style.background = 'rgba(92,155,232,.08)';
-        mockCopied.style.opacity = '0';
-        mockCopied.textContent = 'Generating';
-        mockCopied.style.color = '#7B8693';
-        clearTimeout(mt1); clearTimeout(mt2);
-        mt1 = setTimeout(function () { mockCopied.style.opacity = '1'; }, 80);
-        mt2 = setTimeout(function () { mockCopied.textContent = 'Copied'; mockCopied.style.color = '#5C9BE8'; }, 900);
-      });
-      mockDrop.addEventListener('mouseleave', function () {
-        mockDrop.style.borderColor = 'rgba(255,255,255,.22)';
-        mockDrop.style.background = 'rgba(255,255,255,.02)';
-      });
-    }
   });
 })();
